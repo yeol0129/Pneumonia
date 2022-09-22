@@ -48,7 +48,7 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > Normal = train_df[train_df['Label']=='Normal']
 > ```
 
-## 데이터 처리
+## 데이터 전처리
  > Train의 데이터를 Train set과 Validation set 8:2의 비율로 분할
  > ```python
  > train_df, valid_df = train_test_split(train_df, train_size=0.8, random_state=0)
@@ -60,3 +60,22 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >                                   shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True, vertical_flip =True)
 > test_datagen = ImageDataGenerator(rescale = 1/255)
 > ```
+
+> flow_from_dataframe 통해 train,validation,test에 사용할 이미지데이터 불러온다.
+> ```python
+> train_gen = train_datagen.flow_from_dataframe(dataframe = train_df, directory=train_img, x_col='X_ray_image_name', 
+>                                              y_col='Label', target_size=(224,224), batch_size=64, 
+>                                               class_mode='binary')
+> valid_gen = test_datagen.flow_from_dataframe(dataframe = valid_df, directory=train_img, x_col='X_ray_image_name',
+>                                             y_col='Label', target_size=(224,224), batch_size=64, 
+>                                            class_mode='binary')
+> test_gen = test_datagen.flow_from_dataframe(dataframe = test_df, directory=test_img, x_col='X_ray_image_name', 
+                                            y_col='Label', target_size=(224,224), batch_size=64,
+                                             class_mode='binary')
+> ```
+> ```
+> Found 4228 validated image filenames belonging to 2 classes.
+> Found 1058 validated image filenames belonging to 2 classes.
+> Found 624 validated image filenames belonging to 2 classes.
+> ```
+
