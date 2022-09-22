@@ -54,14 +54,14 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
  > train_df, valid_df = train_test_split(train_df, train_size=0.8, random_state=0)
  > ```
 
-> ImageDataGenerator를 통한 이미지 증식과 정규화
+> ### ImageDataGenerator를 통한 이미지 증식과 정규화
 > ```python
 > train_datagen = ImageDataGenerator(rescale = 1/255,rotation_range = 30, width_shift_range = 0.2, height_shift_range = 0.2, 
 >                                   shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True, vertical_flip =True)
 > test_datagen = ImageDataGenerator(rescale = 1/255)
 > ```
 
-> flow_from_dataframe 통해 train,validation,test에 사용할 이미지데이터 불러온다.
+> ### flow_from_dataframe 통해 train,validation,test에 사용할 이미지데이터 불러온다.
 > ```python
 > train_gen = train_datagen.flow_from_dataframe(dataframe = train_df, directory=train_img, x_col='X_ray_image_name', 
 >                                              y_col='Label', target_size=(224,224), batch_size=64, 
@@ -81,15 +81,15 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > ```
 
 ## 데이터 훈련
-> ResNet50모델을 사용하기위해 모델 불러오기
+> ### ResNet50모델을 사용하기위해 모델 불러오기
 > ```python
 > Resnet_model = tf.keras.applications.ResNet50V2(weights='imagenet', input_shape = (224,224,3),
 >                                                     include_top=False)
 > for layer in Resnet_model.layers:
 >    layer.trainable = False
 > ```
-> ResNet50을 추가하여 모델 학습
-> ```
+> ### ResNet50을 추가하여 모델 학습
+> ```python
 > model = tf.keras.Sequential([
 >    Resnet_model, 
 >    tf.keras.layers.GlobalAveragePooling2D(), 
@@ -99,16 +99,16 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >    tf.keras.layers.Dense(1, activation='sigmoid')
 > ])
 >```
-> 모델 컴파일
-> ```
+> ### 모델 컴파일
+> ```python
 > model.compile(optimizer = keras.optimizers.Adam(learning_rate=0.001),
 >              loss = 'binary_crossentropy',
 >              metrics=['accuracy'])
 >              MODEL_DIR='./pne_model/'
 > ```
 >
-> 과적합방지하기위해 학습자동중단 설정
-> ```
+> ### 과적합방지하기위해 학습자동중단 설정
+> ```python
 > if not os.path.exists(MODEL_DIR):
 >    os.mkdir(MODEL_DIR)
 > modelpath="./pne_model/{epoch:02d}-{val_loss:.4f}.hdf5"
@@ -116,8 +116,8 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > early_stopping_callback=EarlyStopping(monitor='val_loss',patience=3)
 > ```
 > 
-> 모델 학습
-> ```
+> ### 모델 학습
+> ```python
 > history = model.fit(train_gen, 
 >                    validation_data=valid_gen, epochs=100, 
 >                    callbacks=[early_stopping_callback,checkpointer])
@@ -130,8 +130,8 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > 67/67 [==============================] - 54s 805ms/step - loss: 0.0985 - accuracy: 0.9633 - val_loss: 0.1365 - val_accuracy: 0.9461
 > ```
 
-> 모델의 정확도와 손실 시각화
-> ```
+> ### 모델의 정확도와 손실 시각화
+> ```python
 > plt.plot(history.history['accuracy'],'y')
 > plt.plot(history.history['val_accuracy'],'r')
 > plt.plot(history.history['loss'],'g')
