@@ -23,17 +23,17 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >> test_data = meta[meta['Dataset_type']=='TEST']
 >> ```
 
-train과 test이미지를 각각 불러옵니다.
+>> ##### train과 test이미지를 각각 불러옵니다.
 
-```python
-train_img='./Coronahack-Chest-XRay-Dataset/train'
-test_img='./Coronahack-Chest-XRay-Dataset/test'
-```
+>> ```python
+>> train_img='./Coronahack-Chest-XRay-Dataset/train'
+>> test_img='./Coronahack-Chest-XRay-Dataset/test'
+>> ```
 
-데이터 확인
-```
-train_df['Label'].value_counts()
-```
-output : 
-Pnemonia    3944
-Normal      1342
+>> ##### 데이터 확인
+>> ```
+>> train_df['Label'].value_counts()
+>> ```
+>> output : 
+>> Pnemonia    3944
+>> Normal      1342
