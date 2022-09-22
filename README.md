@@ -7,8 +7,9 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 ###### [추가링크](https://ganghee-lee.tistory.com/41)
 ***
 ###### 개선해야할점
-###### 코로ㄴ
-###### 개선해야
+###### * 데이터속 Label_1_Virus_category의 코로나관련 분류를 실패해 대신 label의 폐렴분류로만 함
+###### * 다양한 신경망을 사용하고, Covid19분류로 다시 도전할것이다.
+***
 #### 자세한 코드는 [여기있습니다](https://github.com/yeol0129/xray_ResNet50_Pneumonia/blob/main/pneumonia_resnet50.ipynb)
 ## Data 
 >  ### Chest_xray_Corona_Metadata.csv의 데이터 예
