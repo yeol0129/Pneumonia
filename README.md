@@ -1,6 +1,6 @@
 ResNet50의 이미지분류로 X-ray이미지 분류하기
 =============
-###### 자세한 코드는 [여기](https://github.com/yeol0129/xray_ResNet50_Pneumonia/blob/main/pneumonia_resnet50.ipynb)
+#### 자세한 코드는 [여기](https://github.com/yeol0129/xray_ResNet50_Pneumonia/blob/main/pneumonia_resnet50.ipynb)
 ## Data 
 >  ### Chest_xray_Corona_Metadata.csv의 데이터 예
 >  X_ray_image_name|Label|Dataset_type|Label_2_Virus_category|Label_1_Virus_category
