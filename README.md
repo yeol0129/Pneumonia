@@ -1,7 +1,10 @@
 ResNet50의 이미지분류로 X-ray이미지 분류하기
 =============
->###### 1. 제작 이유
-====
+###### 1. ResNet50이란 [링크](https://koreascience.kr/article/JAKO202005653789520.pdf)
+###### ResNet-50은 50개 계층으로 구성된 컨벌루션 신경망
+###### ILSVRC 2015에서 우승한 알고리즘
+###### 기존 딥러닝 알고리즘이 가진 깊이가 깊어지면 파라미터 수가 증가하여 딥러닝 알고리즘의 문제인 기울기가 사라지는 문제와 과적합이 발생하는 문제를 개선한 모델
+***
 #### 자세한 코드는 [여기있습니다](https://github.com/yeol0129/xray_ResNet50_Pneumonia/blob/main/pneumonia_resnet50.ipynb)
 ## Data 
 >  ### Chest_xray_Corona_Metadata.csv의 데이터 예
