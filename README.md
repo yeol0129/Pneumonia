@@ -140,4 +140,4 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > plt.show()
 > ```
 > output :
-> ![graph](https://user-images.githubusercontent.com/111839344/191777801-97fd13aa-7f06-47ec-a510-f38a3b107e27.png){: width="50%" height="50%"}
+> <img src="https://user-images.githubusercontent.com/111839344/191777801-97fd13aa-7f06-47ec-a510-f38a3b107e27.png" width="200" height="200"/>
