@@ -88,5 +88,15 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > for layer in Resnet_model.layers:
 >    layer.trainable = False
 > ```
-
+> ResNet50이용 모델 학습
+> ```
+> model = tf.keras.Sequential([
+>    Resnet_model, 
+>    tf.keras.layers.GlobalAveragePooling2D(), 
+>    tf.keras.layers.Dense(128, activation='relu'),
+>    tf.keras.layers.BatchNormalization(), 
+>    tf.keras.layers.Dropout(0.2), 
+>    tf.keras.layers.Dense(1, activation='sigmoid')
+> ])
+>```
 
