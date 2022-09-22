@@ -57,6 +57,6 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > ImageDataGenerator를 통한 이미지 증식과 정규화
 > ```python
 > train_datagen = ImageDataGenerator(rescale = 1/255,rotation_range = 30, width_shift_range = 0.2, height_shift_range = 0.2, 
-                                   shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True, vertical_flip =True)
+>                                   shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True, vertical_flip =True)
 > test_datagen = ImageDataGenerator(rescale = 1/255)
 > ```
