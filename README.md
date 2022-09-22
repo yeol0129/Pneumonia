@@ -16,7 +16,7 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >   * train
 
 
-> ### 분류를 위해 Metadata Label에 있는 Train과 Test의 데이터를 나눈 후 저장.
+> ### 분류를 위해 Metadata Label에 있는 Train과 Test의 데이터를 나눈 후 저장합니다.
 
 > ```python
 > train_data = meta[meta['Dataset_type']=='TRAIN']
@@ -42,14 +42,14 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > Pnemonia    3944
 > Normal      1342
 
-> ### 폐렴데이터와 정상데이터를 분리함
+> ### 폐렴데이터와 정상데이터를 분리합니다.
 > ```python
 > Pneumonia  = train_df[train_df['Label']=='Pnemonia']  
 > Normal = train_df[train_df['Label']=='Normal']
 > ```
 
 ## 데이터 전처리
- > Train의 데이터를 Train set과 Validation set 8:2의 비율로 분할
+ > ### Train의 데이터를 Train set과 Validation set 8:2의 비율로 분할합니다.
  > ```python
  > train_df, valid_df = train_test_split(train_df, train_size=0.8, random_state=0)
  > ```
@@ -61,7 +61,7 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > test_datagen = ImageDataGenerator(rescale = 1/255)
 > ```
 
-> ### flow_from_dataframe 통해 train,validation,test에 사용할 이미지데이터 불러온다.
+> ### flow_from_dataframe 통해 train,validation,test에 사용할 이미지데이터 불러옵니다.
 > ```python
 > train_gen = train_datagen.flow_from_dataframe(dataframe = train_df, directory=train_img, x_col='X_ray_image_name', 
 >                                              y_col='Label', target_size=(224,224), batch_size=64, 
@@ -81,14 +81,14 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > ```
 
 ## 데이터 훈련
-> ### ResNet50모델을 사용하기위해 모델 불러오기
+> ### ResNet50모델을 사용하기위해 모델을 불러옵니다.
 > ```python
 > Resnet_model = tf.keras.applications.ResNet50V2(weights='imagenet', input_shape = (224,224,3),
 >                                                     include_top=False)
 > for layer in Resnet_model.layers:
 >    layer.trainable = False
 > ```
-> ### ResNet50을 추가하여 모델 학습
+> ### ResNet50을 추가하여 모델 학습합니다.
 > ```python
 > model = tf.keras.Sequential([
 >    Resnet_model, 
