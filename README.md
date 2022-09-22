@@ -73,9 +73,20 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >                                           y_col='Label', target_size=(224,224), batch_size=64,
 >                                             class_mode='binary')
 > ```
+> output
 > ```
 > Found 4228 validated image filenames belonging to 2 classes.
 > Found 1058 validated image filenames belonging to 2 classes.
 > Found 624 validated image filenames belonging to 2 classes.
 > ```
+
+## 데이터 훈련
+> ResNet50모델을 사용하기위해 모델 불러오기
+> ```python
+> Resnet_model = tf.keras.applications.ResNet50V2(weights='imagenet', input_shape = (224,224,3),
+>                                                     include_top=False)
+> for layer in Resnet_model.layers:
+>    layer.trainable = False
+> ```
+
 
