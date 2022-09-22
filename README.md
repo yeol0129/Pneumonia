@@ -73,7 +73,7 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >                                           y_col='Label', target_size=(224,224), batch_size=64,
 >                                             class_mode='binary')
 > ```
-> output
+> output :
 > ```
 > Found 4228 validated image filenames belonging to 2 classes.
 > Found 1058 validated image filenames belonging to 2 classes.
@@ -88,7 +88,7 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > for layer in Resnet_model.layers:
 >    layer.trainable = False
 > ```
-> ResNet50이용 모델 학습
+> ResNet50을 추가하여 모델 학습
 > ```
 > model = tf.keras.Sequential([
 >    Resnet_model, 
@@ -99,4 +99,45 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >    tf.keras.layers.Dense(1, activation='sigmoid')
 > ])
 >```
+> 모델 컴파일
+> ```
+> model.compile(optimizer = keras.optimizers.Adam(learning_rate=0.001),
+>              loss = 'binary_crossentropy',
+>              metrics=['accuracy'])
+>              MODEL_DIR='./pne_model/'
+> ```
+>
+> 과적합방지하기위해 학습자동중단 설정
+> ```
+> if not os.path.exists(MODEL_DIR):
+>    os.mkdir(MODEL_DIR)
+> modelpath="./pne_model/{epoch:02d}-{val_loss:.4f}.hdf5"
+> checkpointer=ModelCheckpoint(filepath=modelpath,monitor='val_loss',verbose=1,save_best_only=True)
+> early_stopping_callback=EarlyStopping(monitor='val_loss',patience=3)
+> ```
+> 
+> 모델 학습
+> ```
+> history = model.fit(train_gen, 
+>                    validation_data=valid_gen, epochs=100, 
+>                    callbacks=[early_stopping_callback,checkpointer])
+> ```
+> output :
+> ```
+> Epoch 9/100
+> 67/67 [==============================] - ETA: 0s - loss: 0.0985 - accuracy: 0.9633
+> Epoch 9: val_loss did not improve from 0.10675
+> 67/67 [==============================] - 54s 805ms/step - loss: 0.0985 - accuracy: 0.9633 - val_loss: 0.1365 - val_accuracy: 0.9461
+> ```
 
+> 모델의 정확도와 손실 시각화
+> ```
+> plt.plot(history.history['accuracy'],'y')
+> plt.plot(history.history['val_accuracy'],'r')
+> plt.plot(history.history['loss'],'g')
+> plt.plot(history.history['val_loss'],'b')
+> plt.legend(['train_acc', 'test_acc','train_loss', 'test_loss'], loc='center left')
+> plt.show()
+> ```
+> output :
+> ![graph](https://user-images.githubusercontent.com/111839344/191777801-97fd13aa-7f06-47ec-a510-f38a3b107e27.png)
