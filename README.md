@@ -70,8 +70,8 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 >                                             y_col='Label', target_size=(224,224), batch_size=64, 
 >                                            class_mode='binary')
 > test_gen = test_datagen.flow_from_dataframe(dataframe = test_df, directory=test_img, x_col='X_ray_image_name', 
-                                            y_col='Label', target_size=(224,224), batch_size=64,
-                                             class_mode='binary')
+>                                           y_col='Label', target_size=(224,224), batch_size=64,
+>                                             class_mode='binary')
 > ```
 > ```
 > Found 4228 validated image filenames belonging to 2 classes.
