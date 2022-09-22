@@ -14,6 +14,10 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 > * Coronahack-Chest-XRay-Dataset
 >   * test
 >   * train
+> ### 이미지 sample
+> 폐렴|정상
+> ---|---|
+> <img src="https://user-images.githubusercontent.com/111839344/191780342-da945fb9-a1e2-4c58-b157-a8c2ce632917.png" width="200" height="200">|<img src="https://user-images.githubusercontent.com/111839344/191781073-e5f198af-63ae-4ddb-a794-01026e13f7e4.png" width="200" height="200">
 
 
 > ### 분류를 위해 Metadata Label에 있는 Train과 Test의 데이터를 나눈 후 저장합니다.
