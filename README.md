@@ -18,6 +18,6 @@ X-ray 이미지 파일
 분류를 위해 Metadata Label에 있는 Train과 Test의 데이터를 나눠줬습니다.
 
 '''python
-train_data = meta[meta['Dataset_type']=='TRAIN']
+train_data = meta[meta['Dataset_type']=='TRAIN'] \n
 test_data = meta[meta['Dataset_type']=='TEST']
 '''
