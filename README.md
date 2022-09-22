@@ -18,10 +18,10 @@ ResNet50의 이미지분류로 X-ray이미지 분류하기
 
 >> ##### 분류를 위해 Metadata Label에 있는 Train과 Test의 데이터를 나눠줬습니다.
 
-```python
-train_data = meta[meta['Dataset_type']=='TRAIN']
-test_data = meta[meta['Dataset_type']=='TEST']
-```
+>> ```python
+>> train_data = meta[meta['Dataset_type']=='TRAIN']
+>> test_data = meta[meta['Dataset_type']=='TEST']
+>> ```
 
 train과 test이미지를 각각 불러옵니다.
 
