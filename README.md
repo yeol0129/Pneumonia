@@ -1,4 +1,4 @@
-ResNet50의 이미지분류로 X-ray이미지 분류하기
+X-ray Images classification
 =============
 ***
 #### 자세한 코드는 [여기있습니다](https://github.com/yeol0129/xray_ResNet50_Pneumonia/blob/main/pneumonia_resnet50.ipynb)
