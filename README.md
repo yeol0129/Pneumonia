@@ -1,7 +1,7 @@
 X-ray Images classification
 =============
 ***
-#### 자세한 코드는 [여기있습니다](https://github.com/yeol0129/xray_ResNet50_Pneumonia/blob/main/pneumonia_resnet50.ipynb)
+#### [code](https://github.com/yeol0129/xray_ResNet50_Pneumonia/blob/main/pneumonia_resnet50.ipynb)
 ## Data 
 >  ### Chest_xray_Corona_Metadata.csv sample
 >  X_ray_image_name|Label|Dataset_type|Label_2_Virus_category|Label_1_Virus_category
@@ -20,7 +20,7 @@ X-ray Images classification
 > ---|---|
 > <img src="https://user-images.githubusercontent.com/111839344/191780342-da945fb9-a1e2-4c58-b157-a8c2ce632917.png" width="200" height="200">|<img src="https://user-images.githubusercontent.com/111839344/191781073-e5f198af-63ae-4ddb-a794-01026e13f7e4.png" width="200" height="200">
 
-> ### 폐렴데이터 확인
+> ### Pneumonia Data
 > ```python
 > train_df['Label'].value_counts()
 > ```
@@ -28,8 +28,8 @@ X-ray Images classification
 > Pnemonia    3944
 > Normal      1342
 
-## 데이터 훈련
-> ### ResNet50모델을 사용하기위해 모델을 불러옵니다.
+## Data train
+> ### ResNet50 model
 > ```python
 > Resnet_model = tf.keras.applications.ResNet50V2(weights='imagenet', input_shape = (224,224,3),
 >                                                     include_top=False)
@@ -38,7 +38,7 @@ X-ray Images classification
 > 
 >
 > 
-> ### 모델 학습
+> ### training ResNet50 model
 > ```python
 > history = model.fit(train_gen, 
 >                    validation_data=valid_gen, epochs=100, 
