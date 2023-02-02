@@ -21,7 +21,11 @@ X-ray Images classification
 >  test_data = meta[meta['Dataset_type']=='TEST']
 >  ```
 > ### X-ray images
-
+>  ### Separate Pneumonia and Normal data
+>  ```python
+>  Pneumonia  = train_df[train_df['Label']=='Pnemonia']  
+>  Normal = train_df[train_df['Label']=='Normal']
+>  ```
 > * Coronahack-Chest-XRay-Dataset
 >   * test
 >   * train
