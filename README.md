@@ -20,7 +20,6 @@ X-ray Images classification
 >  train_data = meta[meta['Dataset_type']=='TRAIN']
 >  test_data = meta[meta['Dataset_type']=='TEST']
 >  ```
-> ### X-ray images
 >  ### Separate Pneumonia and Normal data
 >  ```python
 >  Pneumonia  = train_df[train_df['Label']=='Pnemonia']  
@@ -30,6 +29,10 @@ X-ray Images classification
 >   * test
 >   * train
 > ### image sample
+>  ```python
+>  Nor_sample = Image.open(os.path.join(train_img, Normal['X_ray_image_name'].iloc[1]))
+>  Pne_sample = Image.open(os.path.join(train_img, Pneumonia['X_ray_image_name'].iloc[1]))
+>  ```
 > Pneumonia|Normal
 > ---|---|
 > <img src="https://user-images.githubusercontent.com/111839344/191780342-da945fb9-a1e2-4c58-b157-a8c2ce632917.png" width="200" height="200">|<img src="https://user-images.githubusercontent.com/111839344/191781073-e5f198af-63ae-4ddb-a794-01026e13f7e4.png" width="200" height="200">
