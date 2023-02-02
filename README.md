@@ -9,7 +9,17 @@ X-ray Images classification
 > IM-01~~.jpeg|Normal|TRAIN|Null|bacteria
 > IM-03~~.jpeg|Normal|Test|Null|virus
 > IM-00~~.jpeg|Pnemonia|TRAIN|Null|Covid-19
-
+>  ### Prepare data
+>  null to 0
+>  ```python
+>  meta.fillna('0', inplace = True)
+>  meta.isnull().sum()
+>  ```
+>  ### Separate train data and test data
+>  ```python
+>  train_data = meta[meta['Dataset_type']=='TRAIN']
+>  test_data = meta[meta['Dataset_type']=='TEST']
+>  ```
 > ### X-ray images
 
 > * Coronahack-Chest-XRay-Dataset
