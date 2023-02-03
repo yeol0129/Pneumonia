@@ -33,7 +33,7 @@ X-ray Images classification
 > Pneumonia|Normal
 > ---|---|
 > <img src="https://user-images.githubusercontent.com/111839344/191780342-da945fb9-a1e2-4c58-b157-a8c2ce632917.png" width="200" height="200">|<img src="https://user-images.githubusercontent.com/111839344/191781073-e5f198af-63ae-4ddb-a794-01026e13f7e4.png" width="200" height="200">
-> ### Data Value
+> ### Train Data Value
 > ```python
 > train_df['Label'].value_counts()
 > ```
