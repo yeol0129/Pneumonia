@@ -25,9 +25,6 @@ X-ray Images classification
 >  Pneumonia  = train_df[train_df['Label']=='Pnemonia']  
 >  Normal = train_df[train_df['Label']=='Normal']
 >  ```
-> * Coronahack-Chest-XRay-Dataset
->   * test
->   * train
 > ### image sample
 >  ```python
 >  Nor_sample = Image.open(os.path.join(train_img, Normal['X_ray_image_name'].iloc[1]))
@@ -36,8 +33,7 @@ X-ray Images classification
 > Pneumonia|Normal
 > ---|---|
 > <img src="https://user-images.githubusercontent.com/111839344/191780342-da945fb9-a1e2-4c58-b157-a8c2ce632917.png" width="200" height="200">|<img src="https://user-images.githubusercontent.com/111839344/191781073-e5f198af-63ae-4ddb-a794-01026e13f7e4.png" width="200" height="200">
-
-> ### Pneumonia Data
+> ### Data Value
 > ```python
 > train_df['Label'].value_counts()
 > ```
@@ -46,6 +42,27 @@ X-ray Images classification
 > Normal      1342
 
 ## Data train
+> ### Split train and validation data sets (train:val = 8:2)
+> ```python
+> train_df, valid_df = train_test_split(train_df, train_size=0.8, random_state=0)
+> ```
+> ### Image data generator
+> ```python
+> train_datagen = ImageDataGenerator(rescale = 1/255,rotation_range = 30, width_shift_range = 0.2, height_shift_range = 0.2, 
+>                                  shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True, vertical_flip =True)
+> test_datagen = ImageDataGenerator(rescale = 1/255)
+> ```
+> ```python
+> train_gen = train_datagen.flow_from_dataframe(dataframe = train_df, directory=train_img, x_col='X_ray_image_name', 
+>                                             y_col='Label', target_size=(224,224), batch_size=64, 
+>                                              class_mode='binary')
+> valid_gen = test_datagen.flow_from_dataframe(dataframe = valid_df, directory=train_img, x_col='X_ray_image_name',
+>                                            y_col='Label', target_size=(224,224), batch_size=64, 
+>                                           class_mode='binary')
+> test_gen = test_datagen.flow_from_dataframe(dataframe = test_df, directory=test_img, x_col='X_ray_image_name', 
+>                                           y_col='Label', target_size=(224,224), batch_size=64,
+>                                            class_mode='binary')
+> ```
 > ### ResNet50 model
 > ```python
 > Resnet_model = tf.keras.applications.ResNet50V2(weights='imagenet', input_shape = (224,224,3),
