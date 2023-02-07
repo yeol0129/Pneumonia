@@ -42,7 +42,7 @@ X-ray Images classification
 > Pnemonia    3944
 > Normal      1342
 
-## Data train
+## Data training
 > ### Split train and validation data sets (train:val = 8:2)
 > ```python
 > train_df, valid_df = train_test_split(train_df, train_size=0.8, random_state=0)
