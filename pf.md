@@ -5,7 +5,7 @@ X-ray Images classification
 [Data](https://www.kaggle.com/datasets/praveengovi/coronahack-chest-xraydataset)
 
 <img width="341" alt="image" src="https://user-images.githubusercontent.com/111839344/217168467-0eabe747-f830-4050-ab68-3263ff7c10a4.png">
-)
+
 ## Data 
 >  ### Chest_xray_Corona_Metadata.csv sample
 >  X_ray_image_name|Label|Dataset_type|Label_2_Virus_category|Label_1_Virus_category
